@@ -1,15 +1,31 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class OriginalDesign extends PApplet {
+
 int x = 5;
 int changeX=1;
 float blueAmount=0;
 float greenAmount=600;
 int y=-60;
-void setup()
+public void setup()
 {
   size(500, 500, P3D);
   noFill();
   frameRate(25);
 }
-void gradient()
+public void gradient()
 {
 	blueAmount=0;
 	greenAmount=600;
@@ -20,11 +36,11 @@ void gradient()
     line(y, -60, -100, y, 560, -100);
     y=y+1;
     greenAmount= greenAmount -1;
-    blueAmount = blueAmount + 0.9;
+    blueAmount = blueAmount + 0.9f;
   }
 }
 
-void draw()
+public void draw()
 {
   gradient();
   // float randomX = random(0, 255);
@@ -79,5 +95,14 @@ void draw()
   if (x<0)
   {
     changeX=-changeX;
+  }
+}
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "OriginalDesign" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
   }
 }
